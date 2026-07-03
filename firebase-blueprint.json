@@ -1,0 +1,85 @@
+{
+  "entities": {
+    "User": {
+      "title": "User Profile",
+      "description": "Information about registered users and their roles",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string" },
+        "name": { "type": "string" },
+        "role": { "type": "string", "enum": ["pilot", "supply", "commander", "executive", "admin"] },
+        "rank": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["uid", "email", "name", "role"]
+    },
+    "Request": {
+      "title": "Equipment Request",
+      "description": "Equipment requisition submitted by pilot",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "pilotId": { "type": "string" },
+        "pilotName": { "type": "string" },
+        "pilotRank": { "type": "string" },
+        "category": { "type": "string", "enum": ["Helmet", "G-Suit", "Oxygen Mask"] },
+        "quantity": { "type": "integer" },
+        "reason": { "type": "string" },
+        "status": { "type": "string", "enum": ["pending", "verified", "approved", "rejected"] },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" },
+        "verifiedBy": { "type": "string" },
+        "approvedBy": { "type": "string" }
+      },
+      "required": ["id", "pilotId", "pilotName", "category", "quantity", "reason", "status", "createdAt"]
+    },
+    "InventoryItem": {
+      "title": "Inventory Item",
+      "description": "Items in the supply depot",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "nsn": { "type": "string" },
+        "category": { "type": "string", "enum": ["Helmet", "G-Suit", "Oxygen Mask"] },
+        "quantity": { "type": "integer" },
+        "reorderPoint": { "type": "integer" },
+        "expiryDate": { "type": "string" },
+        "status": { "type": "string", "enum": ["normal", "expired", "critical"] }
+      },
+      "required": ["id", "name", "nsn", "category", "quantity", "reorderPoint", "status"]
+    },
+    "AuditLog": {
+      "title": "Audit Log",
+      "description": "System audit log for administrator view",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "timestamp": { "type": "string" },
+        "user": { "type": "string" },
+        "action": { "type": "string" },
+        "status": { "type": "string", "enum": ["SUCCESS", "FAILED"] }
+      },
+      "required": ["id", "timestamp", "user", "action", "status"]
+    }
+  },
+  "firestore": {
+    "users/{userId}": {
+      "schema": "User",
+      "description": "Users database"
+    },
+    "requests/{requestId}": {
+      "schema": "Request",
+      "description": "Pilot requests database"
+    },
+    "inventory/{itemId}": {
+      "schema": "InventoryItem",
+      "description": "Inventory items database"
+    },
+    "auditLogs/{logId}": {
+      "schema": "AuditLog",
+      "description": "Audit logs database"
+    }
+  }
+}

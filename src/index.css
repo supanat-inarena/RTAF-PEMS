@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=Noto+Sans:wght@400;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Noto Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Be Vietnam Pro", sans-serif;
+  --font-mono: "IBM Plex Sans", monospace;
+  
+  --color-primary: #002046;
+  --color-primary-container: #1b365d;
+  --color-on-primary-container: #87a0cd;
+  --color-surface-container: #edeeef;
+  --color-surface-container-high: #e7e8e9;
+  --color-surface-container-highest: #e1e3e4;
+  --color-surface-container-low: #f3f4f5;
+  --color-surface-container-lowest: #ffffff;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #f8f9fa;
+}
+
+.login-gradient {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e1e3e4 100%);
+}

@@ -1,0 +1,6 @@
+{
+  "name": "RTAF PEMS",
+  "description": "Pilot Equipment Management System (PEMS) for the Royal Thai Air Force with real-time Firebase database and authentication.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
